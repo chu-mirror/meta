@@ -1,0 +1,21 @@
+.TH INCLUDE 1 " 29 November 20"
+.SH NAME
+include \- include copies of subfiles 
+.SH SYNOPSIS
+\fBinclude
+.SH DESCRIPTION
+.I include 
+copies its input
+to its output unchanged,
+except that each line
+beginning 
+.EX
+	include "filename"
+.EE
+is replaced by the contents of the file
+whose name is filename.
+included files may contain further 
+.B #include 
+lines,
+to arbitrary depth.
+

@@ -1,0 +1,17 @@
+.TH MAKECOPY 1 " 01 December 20"
+.SH NAME
+makecopy \- copy a file to new file 
+.SH SYNOPSIS
+\fBmakecopy\fR \fIold\fR \fInew\fR
+.SH DESCRIPTION
+.I makecopy 
+copies the file old
+to a new instance
+of the file 
+.IR new ,
+i.e.,
+if new already exists
+it is truncated and rewriten,
+otherwise it is made to exist.
+The new file is an exact replica
+of the old.

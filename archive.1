@@ -1,0 +1,99 @@
+.TH ARCHIVE 1 "02 December 20"
+.SH NAME
+archive \- maintain file archive 
+.SH SYNOPSIS
+\fBarchive\fR \fB\-cmd\fI\ aname\fR [\fIfile\fR ...]
+.SH DESCRIPTION
+.I archive
+manages any number of merber files
+in a single file, 
+.IR aname ,
+with sufficient information 
+that members may be selectively 
+added, extracted, replaced, or deleted
+from the collection. 
+.I \-cmd
+is a code 
+that determins the operation to be performed:
+.TP
+\fB\-c\fP create a new archive with named members
+.TP
+\fB\-d\fP delete named mmebers from archive
+.TP
+\fB\-p\fP print named members on standard output
+.TP
+\fB\-t\fP print table of archive contents
+.TP
+\fB\-u\fP update named members or add at end
+.TP
+\fB\-x\fP extract named members from archive
+.PP
+In each case,
+the "named members" are the zero or more filenames
+given as arguments
+following 
+.IR aname .
+If no arguments follow,
+then the "named members" are taken as
+.I all
+of the files in the archive,
+.I except
+for the delete command
+.BR \-d ,
+which is not so rash.
+.I archive 
+complains if a file is named twice
+or cannot be accessed.
+.PP
+The
+.B \-t
+command writes one line
+to the output
+for each named member,
+consisting of
+the member name and a string representation
+of the file length,
+seperated by a blank.
+.PP
+The
+.I create
+commond 
+.B \-c 
+makes a new archive 
+containing the named files.
+The
+.I update
+command
+.B \-u
+replaces existing named members
+and adds new file files
+onto the end
+of an existing archive.
+Create and update read from, 
+and extract writes to,
+files whose names are the same
+as the member names 
+in the archive.
+An intermediate version of the new archive file 
+is first written 
+to the file 
+.IR artemp ;
+hence this filename should be avoided.
+.PP
+An archive is a concatenation 
+of zero or more entries,
+each consisting of 
+a header and an exact copy 
+of the orginal file.
+The header format is
+.EX 
+\-h\- name length
+.EE
+.SH EXAMPLE
+To replace two files in an existing archive,
+add a new one,
+then print the table of contents":
+.EX
+archive -u archfile old1 old2 new1
+archive -t archfile
+.EE

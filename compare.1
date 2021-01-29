@@ -1,0 +1,21 @@
+.TH COMPARE 1 "26 November 20"
+.SH NAME
+compare \- compare files for equality
+.SH SYNOPSIS
+\fBcompare\fR [\fIfile1\fR] \fIfile2\fR
+.SH DESCRIPTION
+.I compare
+performs a line-by-line comparision 
+of file1 and file2, 
+printing each pair of differing lines, 
+preceded by a line 
+containing the offending line's number and a colon.  
+If the files are identical, 
+no output is produced.  
+If one file is a prefix of the other, 
+.I compare
+reports end of file on the shorter file.
+.PP
+.I file1 
+can be read from standard input.
+
