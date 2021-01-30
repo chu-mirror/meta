@@ -1,10 +1,10 @@
 
-ALL = charcount compare \
+ALL = compare \
 detab echo entab \
-incld linecount makecopy print \
+incld makecopy print \
 tail translit wordcount 
 
-LITE = hello find cpy concat 
+LITE = hello find cpy concat count
 SUB = copy errorf
 
 HDR = $(SUB:=.h)
