@@ -1,10 +1,9 @@
 
 ALL = compare \
-detab echo entab \
-incld makecopy print \
+incld print \
 tail translit wordcount 
 
-LITE = hello find cpy concat count
+LITE = makecopy echo hello find cpy concat count
 SUB = copy errorf
 
 HDR = $(SUB:=.h)
@@ -15,8 +14,8 @@ TANGLE = ctangle
 
 CFLAGS = -g
 
+.SUFFIXES: 
 .SUFFIXES: .c .o .w .tex .pdf
-.c.o: ; $(CC) $(CFLAGS) -c -o $@ $<
 .o: ; $(CC) $(CFLAGS) -o $@ $<
 .tex.pdf: ; pdftex $<
 .w.tex: ; $(WEAVE) $<
@@ -27,10 +26,10 @@ all: $(ALL) $(LITE)
 $(OBJ): meta.h
 
 clean: clean-lite
-	rm -f $(ALL) $(OBJ)
+	@rm -f $(ALL) $(OBJ)
 
 clean-lite:
-	rm -f $(LITE:=.tex) $(LITE:=.c)\
+	@rm -f $(LITE:=.tex) $(LITE:=.c)\
 		$(LITE:=.log) $(LITE:=.idx)\
 		$(LITE:=.toc) $(LITE:=.scn)\
 		$(LITE:=.pdf) $(LITE)
@@ -39,11 +38,15 @@ clean-lite:
 concat: concat.o errorf.o copy.o
 	$(CC) $(CFLAGS) -o $@ concat.o errorf.o copy.o
 
+concat.o: copy.h
+
 incld: incld.o errorf.o
 	$(CC) -o $@ incld.o errorf.o
 
-makecopy: makecopy.o errorf.o
-	$(CC) -o $@ makecopy.o errorf.o
+makecopy: makecopy.o errorf.o copy.o
+	$(CC) -o $@ makecopy.o errorf.o copy.o
+
+makecopy.o: copy.h errorf.h
 
 print: print.o errorf.o
 	$(CC) -o $@ print.o errorf.o

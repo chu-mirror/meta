@@ -1,5 +1,5 @@
 @* The |count| program.
-|count| print byte and newline counts for input.
+|count| print byte , word, and newline counts for input.
 
 @c
 #include "meta.h"
@@ -11,21 +11,41 @@ main(int argc, char *argv[])
 	@<output counts@>;
 }
 
-@ Need two variables to store counts. 
+@ Need three variables to store counts, 
+and one more to record current status to count words.
 @<handle input@>=
-int nc, nl;
-nc = nl = 0;
+int nc, nw, nl, inword;
+nc = nl = nw = 0;
+inword = 0;
 @<loop for each characters@>;
 
 @ @<loop for each characters@>=
 char c;
 while ((c = getchar()) != EOF) {
-	nc++;
-	if (c == '\n') {
-		nl++;
+	@<whether to increase |nc|@>;
+	@<whether to increase |nw|@>;
+	@<whether to increase |nl|@>;
+}
+
+@ @<whether to increase |nc|@>=
+nc++;
+
+@ Assume that all words are delimited by blanks,
+tabs, newlines.
+@<whether to increase |nw|@>=
+if (c == ' ' || c == '\t' || c == '\n') {
+	inword = 0;
+} else {
+	if (inword == 0) {
+		nw++;
 	}
+	inword = 1;
+}
+@ @<whether to increase |nl|@>=
+if (c == '\n') {
+	nl++;
 }
 
 @ @<output counts@>=
-printf("%d %d\n", nc, nl);
+printf("%d %d %d\n", nl, nw, nc);
 
