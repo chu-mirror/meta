@@ -8,9 +8,6 @@ The new file is an exact replication
 of the old.
 
 @c
-#include "meta.h"
-#include "errorf.h"
-@#
 @<refs@>@;
 
 int
@@ -32,6 +29,8 @@ fo = fopen(argv[2], "w");
 if (fi == NULL || fo == NULL) {
 	err_sys("fopen:");
 }
+@ @<refs@>=
+#include "errorf.h"@;
 
 @ Use |copy| defined in cpy.w
 @<refs@>=
@@ -39,5 +38,4 @@ if (fi == NULL || fo == NULL) {
 
 @ @<copy |fi|...@>=
 copy(fi, fo);
-
 

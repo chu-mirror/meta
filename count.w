@@ -2,8 +2,7 @@
 |count| print byte , word, and newline counts for input.
 
 @c
-#include "meta.h"
-@#
+@<refs@>@;
 int
 main(int argc, char *argv[])
 {
@@ -26,6 +25,8 @@ while ((c = getchar()) != EOF) {
 	@<whether to increase |nw|@>;
 	@<whether to increase |nl|@>;
 }
+@ @<refs@>=
+#include <stdio.h>@;
 
 @ @<whether to increase |nc|@>=
 nc++;

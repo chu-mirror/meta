@@ -2,8 +2,7 @@
 Just print all arguments.
 
 @c
-#include "meta.h"
-@#
+@<refs@>@;
 
 int
 main(int argc, char *argv[])
@@ -11,9 +10,14 @@ main(int argc, char *argv[])
 	@<loop to output@>;
 }
 
-@ @<loop to output@>=
+@ Do not output the tailing blank.
+@<loop to output@>=
 int i;
 for (i = 1; i < argc - 1; i++) {
 	printf("%s ", argv[i]);
 }
 puts(argv[argc-1]);
+
+@ @<refs@>=
+#include <stdio.h>@;
+

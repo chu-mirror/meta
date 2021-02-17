@@ -18,11 +18,11 @@ The {\it definition} contains all the definition
 of the words that defined in this file.
 
 @<Hello World!@>=
-	@<reference@>@;
-	@<definition@>@;
+@<reference@>@;
+@<definition@>@;
 
 @ The ultimate goal of writing a C program is
-basicly the definition of new words.
+basicly the definition of new {\it words}.
 And in this example, which is a executable program,
 as you would guess,
 the new word is |main|.
@@ -33,14 +33,14 @@ the new word is |main|.
 @ Now turn to the definition of |main| function.
 All need to do is merely printing a line of text
 to show my gratitude to this beautiful world.
+(You can regard |@<say hello@>| as a {\it sentence},
+composed by {\it words}.)
 
 @<def main@>=
 int
 main()
 {
 	@<say hello@>;
-	
-	return 0;
 }
 
 @ So, how do I print the words out?
@@ -66,7 +66,7 @@ I use standard library here.
 {
 	puts(hello);
 }
-@ So, all the words have been difined, now, run it.
+@ So, all the words have been defined, now, run it.
 
 \indent{\tt 
 Hello, world!

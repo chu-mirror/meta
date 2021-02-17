@@ -2,8 +2,8 @@
 |detab| copies its input to output, expand tabs to spaces.
 
 @c
-#include "meta.h"
-
+@<refs@>@;
+@#
 int
 main(int argc, char *argv[])
 {
@@ -39,6 +39,9 @@ while ((c = getchar()) != EOF) {
 		break;
 	}
 }
+
+@ @<refs@>=
+#include <stdio.h>
 
 @ @<expand tab@>=
 do {
