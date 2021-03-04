@@ -1,9 +1,9 @@
 
 ALL = compare \
 incld print \
-tail translit wordcount 
+tail wordcount 
 
-LITE = makecopy echo hello find cpy concat count detab	
+LITE = makecopy echo hello find cpy concat count detab	translit
 SUB = copy errorf
 
 HDR = $(SUB:=.h)
